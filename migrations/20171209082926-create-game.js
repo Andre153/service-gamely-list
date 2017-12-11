@@ -13,10 +13,35 @@ module.exports = {
       },
         platform: Sequelize.STRING,
         category: Sequelize.STRING,
+        ps4Supported: {
+          allowNull: false,
+          type: Sequelize.BOOLEAN
+        },
+        ps3Supported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
+        ps2Supported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
+        ps1Supported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
+        xboxSupported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
+        wiiSupported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
