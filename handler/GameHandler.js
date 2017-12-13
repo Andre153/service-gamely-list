@@ -14,7 +14,10 @@ module.exports = {
     async findGamesByCategory(req, res) {
         const category = req.param('category');
         await Game.findAll({ where: {category: category}})
-            .then(categories => res.status(200).send(categories))
+            .then(categories => {
+                res
+                res.status(200).send(categories)
+            })
             .catch(err => res.status(400).send(err))
     },
 
