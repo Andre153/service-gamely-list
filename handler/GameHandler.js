@@ -1,8 +1,43 @@
 const Game = require('../models').Game;
 const fs = require('fs');
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = {
+
+    async findAllGames(res) {
+        await Game.findAll()
+            .then(games => res.status(200).send(games))
+            .catch(err => res.status(400).send(err))
+    },
+
+    async findGamesByCategory(req, res) {
+        const category = req.param('category');
+        await Game.findAll({ where: {category: category}})
+            .then(categories => res.status(200).send(categories))
+            .catch(err => res.status(400).send(err))
+    },
+
+    async findAllCategories(res) {
+        await Game.findAll({ attributes: ['categories'], raw: true})
+            .then(categories => res.status(201).send(categories))
+            .catch(err => res.status(400).send(err))
+    },
+
+    async findGameByKeyword(req, res) {
+        const keyword = req.param('key');
+        const platform = req.param('platform');
+        Game.findAll({
+            where: {
+                name: { [Op.iLike]: `${keyword}%`},
+                platform: platform
+            },
+            raw: true,
+            limit: 5
+        }).then(games => res.status(200).send(games))
+            .catch(err => res.status(400).send(err))
+    },
+
     async create(req, res) {
         const game = req.body;
         console.log('Awaiting the promise .... ');
