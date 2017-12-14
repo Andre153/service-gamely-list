@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
           primaryKey: true
       },
       name: DataTypes.STRING,
-      platform: DataTypes.STRING,
       category: DataTypes.STRING,
       ps4Supported: {
           allowNull: false,
@@ -25,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
           type: DataTypes.BOOLEAN
       },
-      xboxSupported: {
+      xbox360Supported: {
+          allowNull: false,
+          type: DataTypes.BOOLEAN
+      },
+      xboxoneSupported: {
           allowNull: false,
           type: DataTypes.BOOLEAN
       },

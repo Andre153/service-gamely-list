@@ -84,12 +84,12 @@ module.exports = {
                 Game.create({
                     name: name,
                     category: category,
-                    platform: platform,
                     ps4Supported: platform === 'PS4',
                     ps3Supported: platform === 'PS3',
                     ps2Supported: platform === 'PS2',
                     ps1Supported: platform === 'PS1',
-                    xboxSupported: platform === 'XBOX',
+                    xboxoneSupported: platform === 'XBOXONE',
+                    xbox360Supported: platform === 'XBOX360',
                     wiiSupported: platform === 'WII',
                 })
                     .then(game => resolve(game))

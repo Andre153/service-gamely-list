@@ -4,6 +4,7 @@ const gameHandler = require('../handler/GameHandler');
 
 
 router.post('/add',  async(req, res, next) => {gameHandler.create(req, res)});
+//PLAYSTATION
 router.get('/process/ps4', async(req, res, next) => {
     gameHandler.processAndCreateFromFileInitial(res, res, 'PS4')
 });
@@ -16,8 +17,15 @@ router.get('/process/ps2', async(req, res, next) => {
 router.get('/process/ps1', async(req, res, next) => {
     gameHandler.processAndCreateFromFileInitial(res, res, 'PS1')
 });
+
+
+//XBOX
+router.get('/process/xboxone', async(req, res, next) => {
+    gameHandler.processAndCreateFromFileInitial(res, res, 'XBOXONE')
+});
+
 router.get('/process/xbox360', async(req, res, next) => {
-    gameHandler.processAndCreateFromFileInitial(res, res, 'XBOX')
+    gameHandler.processAndCreateFromFileInitial(res, res, 'XBOX360')
 });
 
 router.get('/category/:category', async(req, res, next) => {

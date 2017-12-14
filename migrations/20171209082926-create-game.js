@@ -11,7 +11,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-        platform: Sequelize.STRING,
         category: Sequelize.STRING,
         ps4Supported: {
           allowNull: false,
@@ -29,7 +28,11 @@ module.exports = {
             allowNull: false,
             type: Sequelize.BOOLEAN
         },
-        xboxSupported: {
+        xbox360Supported: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN
+        },
+        xboxoneSupported: {
             allowNull: false,
             type: Sequelize.BOOLEAN
         },
