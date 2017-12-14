@@ -30,15 +30,62 @@ module.exports = {
     async findGameByKeyword(req, res) {
         const keyword = req.param('key');
         const platform = req.param('platform');
-        Game.findAll({
+        if (platform === 'XBOX360') this.findXBOX360Games(keyword).then(games => res.status(200).send(games))
+                .catch(err => res.status(400).send(err));
+
+        if (platform === 'XBOXONE') this.findXBOXONEGames(keyword).then(games => res.status(200).send(games))
+            .catch(err => res.status(400).send(err));
+
+        if (platform === 'PS4') this.findPS4Games(keyword).then(games => res.status(200).send(games))
+            .catch(err => res.status(400).send(err));
+
+        if (platform === 'PS3') this.findPS3Games(keyword).then(games => res.status(200).send(games))
+            .catch(err => res.status(400).send(err));
+
+    },
+
+    async findPS3Games(keyword) {
+        return Game.findAll({
             where: {
                 name: { [Op.iLike]: `${keyword}%`},
-                platform: platform
+                ps3Supported: true
             },
             raw: true,
             limit: 5
-        }).then(games => res.status(200).send(games))
-            .catch(err => res.status(400).send(err))
+        })
+    },
+
+    async findPS4Games(keyword) {
+        return Game.findAll({
+            where: {
+                name: { [Op.iLike]: `${keyword}%`},
+                ps4Supported: true
+            },
+            raw: true,
+            limit: 5
+        })
+    },
+
+    async findXBOXONEGames(keyword) {
+        return Game.findAll({
+            where: {
+                name: { [Op.iLike]: `${keyword}%`},
+                xboxoneSupported: true
+            },
+            raw: true,
+            limit: 5
+        })
+    },
+
+    async findXBOX360Games(keyword) {
+        return Game.findAll({
+            where: {
+                name: { [Op.iLike]: `${keyword}%`},
+                xbox360Supportedb: true
+            },
+            raw: true,
+            limit: 5
+        })
     },
 
     async create(req, res) {
