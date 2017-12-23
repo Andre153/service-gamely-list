@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
           autoIncrement: true,
           primaryKey: true
       },
+      uuid: {
+          allowNull: false,
+          type: DataTypes.STRING
+      },
       name: DataTypes.STRING,
       category: DataTypes.STRING,
       ps4Supported: {

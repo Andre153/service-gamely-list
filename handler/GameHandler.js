@@ -2,6 +2,7 @@ const Game = require('../models').Game;
 const fs = require('fs');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const uuid = require('uuid/v4');
 
 module.exports = {
 
@@ -130,6 +131,7 @@ module.exports = {
                 console.log('Needs to be created');
                 Game.create({
                     name: name,
+                    uuid: uuid(),
                     category: category,
                     ps4Supported: platform === 'PS4',
                     ps3Supported: platform === 'PS3',
